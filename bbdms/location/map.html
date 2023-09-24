@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaflet Map Example</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+    <div id="map" style="height: 500px;"></div> <!-- Adjust height as needed -->
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        var markers = [
+            {
+                "id": "1",
+                "lat": 27.727266,
+                "lng": 85.317497,
+                "name": "Samakusi"
+            },
+            {
+                "id": "2",
+                "lat": 27.727266,
+                "lng": 85.308129,
+                "name": "Gongabu"
+            },
+            {
+                "id": "3",
+                "lat": 27.704200,
+                "lng": 85.306700,
+                "name": "Maru tol"
+            },
+            {
+                "id": "4",
+                "lat": 27.667292,
+                "lng": 85.323153,
+                "name": "Laganjhel"
+            },
+            {
+                "id": "5",
+                "lat": 28.296400,
+                "lng": 84.856800,
+                "name": "Gorkha"
+            },
+            {
+                "id": "6",
+                "lat": 23.627900,
+                "lng": 87.542100,
+                "name": "Illambazar"
+            },
+            {
+                "id": "7",
+                "lat": 27.67820000,
+                "lng": 85.3808000,
+                "name": "Thimi"
+            }
+        ];
+
+        var map = L.map('map').setView([27.727266, 85.317497], 6); // Center and zoom level
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        for (var i = 0; i < markers.length; i++) {
+            var markerData = markers[i];
+            var marker = L.marker([markerData.lat, markerData.lng]).addTo(map);
+            marker.bindPopup(markerData.name);
+        }
+    </script>
+</body>
+</html>
